@@ -3,7 +3,8 @@
    D import jQuery
    D add the icon
        - XXX why is there extra space on top of the icon?!
-- when you click on the icon, open an annotation window
+D when you click on the icon, open an annotation window
+    - make it smoothly animate
 - send the annotations to the background page to store in SQL
 - get annotations from the background page at startup and don’t show
    the icon if there are none

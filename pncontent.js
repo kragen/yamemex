@@ -2,7 +2,7 @@ var border = '1px solid black';
 var borderRadius = '3px';
 var iconSize = '32px';
 
-$('<div/>')
+var thing = $('<div/>')
   .css({ position: 'fixed'
        , top: '10px'
        , right: '0px'
@@ -19,6 +19,11 @@ $('<div/>')
   .append($('<img/>')
           .attr('src', chrome.extension.getURL('write.png'))
           .css({width: iconSize, height: iconSize})
+          .click(openAnnotationWindow)
          )
   .appendTo(document.body)
   ;
+
+function openAnnotationWindow() {
+    thing.empty().append($('<textarea/>'));
+}
