@@ -12,3 +12,6 @@ D store annotations in SQL
 - make thingy opaquer when the focus is in it
 - make it take focus
 - make it dismissable
+- It should probably resize vertically as I type more and more stuff.
+- making it so I can drag it if I want it to be
+   bigger/smaller/some-other-shape.
