@@ -2,7 +2,14 @@ var border = '1px solid black';
 var borderRadius = '3px';
 var iconSize = '32px';
 
-var thing = $('<div/>')
+var ourAnnotation = null;
+var thing = null;
+
+chrome.extension.sendRequest( {getAnnotationsFor: location.href}
+                              , function(annotation) {
+    ourAnnotation = annotation;
+
+thing = $('<div/>')
   .css({ position: 'fixed'
        , top: '10px'
        , right: '0px'
@@ -15,25 +22,27 @@ var thing = $('<div/>')
        , borderBottom: border
        , zIndex: 2147483646
        , opacity: 0.5
+       , display: annotation ? '' : 'none'
        })
+
   .append($('<img/>')
           .attr('src', chrome.extension.getURL('write.png'))
           .css({width: iconSize, height: iconSize, margin: 0})
           .click(openAnnotationWindow)
          )
+
   .appendTo(document.body)
+
   ;
+});
 
 function openAnnotationWindow() {
-    chrome.extension.sendRequest( {getAnnotationsFor: location.href}
-                                , function(annotation) {
         var te = $('<textarea/>')
-                .val(annotation)
+                .val(ourAnnotation || 'Type your annotations here.')
                 .keyup(sendAnnotation)
                 ;
 
-        thing.empty().append(te);
-    });
+    thing.css({display: ''}).empty().append(te);
 }
 
 function sendAnnotation() {

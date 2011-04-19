@@ -61,7 +61,7 @@ chrome.extension.onRequest.addListener(
         getAnnotation(request.getAnnotationsFor, function(row) {
             console.log(row);
             if (!row) {
-                sendResponse('Type your annotations here.');
+                sendResponse(null);
             } else {
                 sendResponse(row.annotation);
             }

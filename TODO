@@ -6,8 +6,9 @@
 D when you click on the icon, open an annotation window
     - make it smoothly animate
 D send the annotations to the background page to store in SQL
-- get annotations from the background page at startup and don’t show
+D get annotations from the background page at startup and don’t show
    the icon if there are none
+- make browser action show annotation pane
 D store annotations in SQL
 - make thingy opaquer when the focus is in it
 - make it take focus
