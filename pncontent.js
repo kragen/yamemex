@@ -25,5 +25,8 @@ var thing = $('<div/>')
   ;
 
 function openAnnotationWindow() {
-    thing.empty().append($('<textarea/>'));
+    chrome.extension.sendRequest( {getAnnotationsFor: location.href}
+                                , function(annotation) {
+        thing.empty().append($('<textarea/>').val(annotation));
+    });
 }

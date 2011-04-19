@@ -2,4 +2,10 @@
 chrome.browserAction.onClicked.addListener(function(tab) {
     console.log("Clicked for %o", tab);
 });
+
+chrome.extension.onRequest.addListener(
+    function(request, sender, sendResponse) {
+        sendResponse("This is a dummy annotation content!");
+    }
+);
 </script>
