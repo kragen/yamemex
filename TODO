@@ -1,7 +1,8 @@
 - pop up an icon on every page with a content script
    D add a content script
    D import jQuery
-   - add the icon
+   D add the icon
+       - XXX why is there extra space on top of the icon?!
 - when you click on the icon, open an annotation window
 - send the annotations to the background page to store in SQL
 - get annotations from the background page at startup and don’t show
