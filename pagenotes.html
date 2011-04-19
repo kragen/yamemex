@@ -10,6 +10,13 @@ var annotations = {
 
 chrome.extension.onRequest.addListener(
     function(request, sender, sendResponse) {
+        if (request.updateAnnotationsFor === undefined) return;
+        annotations[request.updateAnnotationsFor] = request.annotations;
+    }
+);
+
+chrome.extension.onRequest.addListener(
+    function(request, sender, sendResponse) {
         if (request.getAnnotationsFor === undefined) return;
         sendResponse(annotations[request.getAnnotationsFor] || 
                      'Type your annotations here');

@@ -27,6 +27,17 @@ var thing = $('<div/>')
 function openAnnotationWindow() {
     chrome.extension.sendRequest( {getAnnotationsFor: location.href}
                                 , function(annotation) {
-        thing.empty().append($('<textarea/>').val(annotation));
+        var te = $('<textarea/>')
+                .val(annotation)
+                .keyup(sendAnnotation)
+                ;
+
+        thing.empty().append(te);
     });
+}
+
+function sendAnnotation() {
+    chrome.extension.sendRequest({ updateAnnotationsFor: location.href
+                                 , annotations: this.value
+                                 });
 }
