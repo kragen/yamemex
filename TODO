@@ -8,7 +8,7 @@ D when you click on the icon, open an annotation window
 D send the annotations to the background page to store in SQL
 - get annotations from the background page at startup and don’t show
    the icon if there are none
-- store annotations in SQL
+D store annotations in SQL
 - make thingy opaquer when the focus is in it
 - make it take focus
 - make it dismissable

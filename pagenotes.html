@@ -11,19 +11,37 @@ function dbErrorCallback(t, error) {
 var db = openDatabase('pagenotes', '1.0', 'PageNotes annotation database', 0);
 console.log(db);
 
-db.transaction(function(t) {
-    console.log('enqueuing statement');
-    t.executeSql(  'create table if not exists annotations ' +
-                   '    ( timestamp varchar ' +
-                   '    , url varchar ' +
-                   '    , annotation varchar ' +
-                   '    )'
-                 , []
-                 , null
-                 , dbErrorCallback
-                );
-    console.log('enqueued statement');
-});
+function sql(statement, args, cb) {
+    db.transaction(function(t) {
+        t.executeSql(statement, args || [], cb, dbErrorCallback);
+    });
+}
+
+sql(  'create table if not exists annotations ' +
+      '    ( timestamp varchar ' +
+      '    , url varchar ' +
+      '    , annotation varchar ' +
+      '    )'
+   );
+
+sql('create unique index if not exists annotations_url on annotations (url)');
+
+function getAnnotation(url, callback) {
+    sql('select * from annotations where url = ?', [url], function(t, results) {
+        if (results.rows.length === 0) {
+            callback(null);
+        } else {
+            callback(results.rows.item(0));
+        }
+    });
+}
+
+function setAnnotation(url, annotation) {
+    sql( 'replace into annotations (timestamp, url, annotation) ' +
+         'values                   (datetime(), ?,       ?    ) '
+       , [                                     url, annotation]
+       );
+}
 
 var annotations = {
     'http://code.google.com/chrome/extensions/browserAction.html': 
@@ -33,15 +51,21 @@ var annotations = {
 chrome.extension.onRequest.addListener(
     function(request, sender, sendResponse) {
         if (request.updateAnnotationsFor === undefined) return;
-        annotations[request.updateAnnotationsFor] = request.annotations;
+        setAnnotation(request.updateAnnotationsFor, request.annotations);
     }
 );
 
 chrome.extension.onRequest.addListener(
     function(request, sender, sendResponse) {
         if (request.getAnnotationsFor === undefined) return;
-        sendResponse(annotations[request.getAnnotationsFor] || 
-                     'Type your annotations here');
+        getAnnotation(request.getAnnotationsFor, function(row) {
+            console.log(row);
+            if (!row) {
+                sendResponse('Type your annotations here.');
+            } else {
+                sendResponse(row.annotation);
+            }
+        });
     }
 );
 </script>
