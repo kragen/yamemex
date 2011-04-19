@@ -2,4 +2,5 @@
 , "version": "1.0"
 , "description": "Provides a space for annotating web pages."
 , "browser_action": { "default_icon": "write.png", "popup": "popup.html" }
+, "icons": { "128": "write.png" }
 }
