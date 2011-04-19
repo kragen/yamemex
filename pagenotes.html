@@ -1,6 +1,6 @@
 <script>
 chrome.browserAction.onClicked.addListener(function(tab) {
-    console.log("Clicked for %o", tab);
+    chrome.tabs.sendRequest(tab.id, {openAnnotationWindow: 'please'});
 });
 
 function dbErrorCallback(t, error) {

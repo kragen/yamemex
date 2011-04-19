@@ -45,6 +45,10 @@ function openAnnotationWindow() {
     thing.css({display: ''}).empty().append(te);
 }
 
+chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
+    openAnnotationWindow();
+});
+
 function sendAnnotation() {
     chrome.extension.sendRequest({ updateAnnotationsFor: location.href
                                  , annotations: this.value
