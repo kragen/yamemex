@@ -2,7 +2,7 @@
    D add a content script
    D import jQuery
    D add the icon
-       - XXX why is there extra space on top of the icon on http://code.google.com/chrome/extensions/browserAction.html?!
+       D why is there extra space on top of the icon on http://code.google.com/chrome/extensions/browserAction.html?!
 D when you click on the icon, open an annotation window
     - make it smoothly animate
 - send the annotations to the background page to store in SQL
