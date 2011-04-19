@@ -3,9 +3,16 @@ chrome.browserAction.onClicked.addListener(function(tab) {
     console.log("Clicked for %o", tab);
 });
 
+var annotations = {
+    'http://code.google.com/chrome/extensions/browserAction.html': 
+        'These are the annotations for browserAction.html!'
+};
+
 chrome.extension.onRequest.addListener(
     function(request, sender, sendResponse) {
-        sendResponse("This is a dummy annotation content!");
+        if (request.getAnnotationsFor === undefined) return;
+        sendResponse(annotations[request.getAnnotationsFor] || 
+                     'Type your annotations here');
     }
 );
 </script>
