@@ -1,6 +1,10 @@
 { "name": "PageNotes"
 , "version": "1.0"
 , "description": "Provides a space for annotating web pages."
-, "browser_action": { "default_icon": "write.png", "popup": "popup.html" }
+, "browser_action": 
+  { "default_icon": "write.png"
+  , "default_title": "PageNotes" 
+  }
 , "icons": { "128": "write.png" }
+, "background_page": "pagenotes.html"
 }
