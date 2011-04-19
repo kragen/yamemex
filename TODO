@@ -1,4 +1,4 @@
-- pop up an icon on every page with a content script
+D pop up an icon on every page with a content script
    D add a content script
    D import jQuery
    D add the icon
