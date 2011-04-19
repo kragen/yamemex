@@ -3,6 +3,28 @@ chrome.browserAction.onClicked.addListener(function(tab) {
     console.log("Clicked for %o", tab);
 });
 
+function dbErrorCallback(t, error) {
+    console.log('SQL error %o', error);
+    return true;
+}
+
+var db = openDatabase('pagenotes', '1.0', 'PageNotes annotation database', 0);
+console.log(db);
+
+db.transaction(function(t) {
+    console.log('enqueuing statement');
+    t.executeSql(  'create table if not exists annotations ' +
+                   '    ( timestamp varchar ' +
+                   '    , url varchar ' +
+                   '    , annotation varchar ' +
+                   '    )'
+                 , []
+                 , null
+                 , dbErrorCallback
+                );
+    console.log('enqueued statement');
+});
+
 var annotations = {
     'http://code.google.com/chrome/extensions/browserAction.html': 
         'These are the annotations for browserAction.html!'
