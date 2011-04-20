@@ -10,7 +10,8 @@ D get annotations from the background page at startup and don’t show
    the icon if there are none
 D make browser action show annotation pane
 D store annotations in SQL
-- make a page to show all the annotations
+D make a page to show all the annotations
+- make annotation page do some minimal formatting at least
 - make thingy opaquer when the focus is in it
 - make it take focus
 - make it dismissable
