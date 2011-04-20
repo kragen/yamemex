@@ -37,12 +37,18 @@ chrome.extension.sendRequest( {getAnnotationsFor: location.href}
 });
 
 function openAnnotationWindow() {
-    var te = $('<textarea/>')
+    thing.css({display: ''}).empty().append(
+        $('<textarea/>')
         .val(ourAnnotation || 'Type your annotations here.')
+        .css({display: 'block'})
         .keyup(sendAnnotation)
+    )
+    .append(
+        $('<a>see all annotations</a>')
+            .attr('href', chrome.extension.getURL('blog.html'))
+            .attr('target', '_blank')
+    )
     ;
-
-    thing.css({display: ''}).empty().append(te);
 }
 
 chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
