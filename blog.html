@@ -1,1 +1,24 @@
 All annotations!
+<ul id="entries"></ul>
+<script src="jquery-1.5.2.min.js"></script>
+<script src="db.js"></script>
+<script>
+$(renderBlog);
+
+function renderBlog() {
+    sql( 'select * from annotations order by timestamp desc'
+       , []
+       , function(t, results) {
+           var dest = $('#entries');
+           dest.empty();
+           for (var ii = 0; ii < results.rows.length; ii++) {
+               var row = results.rows.item(ii);
+               dest.append($('<li/>')
+                           .text(row.annotation + ' ')
+                           .append($('<a>link</a>').attr('href', row.url)))
+           }
+       }
+       );
+}
+
+</script>
