@@ -10,9 +10,15 @@ D get annotations from the background page at startup and don’t show
    the icon if there are none
 D make browser action show annotation pane
 D store annotations in SQL
+- make a page to show all the annotations
 - make thingy opaquer when the focus is in it
 - make it take focus
 - make it dismissable
 - It should probably resize vertically as I type more and more stuff.
 - making it so I can drag it if I want it to be
    bigger/smaller/some-other-shape.
+- hide annotations in an iframe to keep them private from the page
+- store the original date on annotations, not the latest change date
+- make the placeholder text be selected initially
+- make the tab thingy show up earlier, not after page load finishes,
+   and similarly for the event handler
