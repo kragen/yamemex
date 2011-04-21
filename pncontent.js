@@ -11,7 +11,7 @@ chrome.extension.sendRequest( {getAnnotationsFor: location.href}
 
     thing = $('<div/>')
       .css({ position: 'fixed'
-           , top: '10px'
+           , top: '40px'
            , right: '0px'
            , backgroundColor: 'white'
            , borderTopLeftRadius: borderRadius
