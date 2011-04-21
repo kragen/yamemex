@@ -11,6 +11,7 @@ D get annotations from the background page at startup and don’t show
 D make browser action show annotation pane
 D store annotations in SQL
 D make a page to show all the annotations
+- move the tab down a bit
 - make annotation page do some minimal formatting at least
 - make thingy opaquer when the focus is in it
 - make it take focus
@@ -23,3 +24,9 @@ D make a page to show all the annotations
 - make the placeholder text be selected initially
 - make the tab thingy show up earlier, not after page load finishes,
    and similarly for the event handler
+- handle URL changes that don’t reload the page; the thing for
+   http://www.facebook.com/ shouldn’t
+   still be visible when I am on
+   http://www.facebook.com/event.php?eid=109614559124178&notif_t=event_invite
+- make "see all" link be text-align:center because it looks great on
+   http://www.pehub.com/102796/concern-grows-over-founders-cashing-out-too-much-too-early/
