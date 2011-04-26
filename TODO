@@ -11,9 +11,9 @@ D get annotations from the background page at startup and don’t show
 D make browser action show annotation pane
 D store annotations in SQL
 D make a page to show all the annotations
-- move the tab down a bit
+D move the tab down a bit
 - make annotation page do some minimal formatting at least
-- make thingy opaquer when the focus is in it
+D make thingy opaquer when the focus is in it
 - make it take focus
 - make it dismissable
 - It should probably resize vertically as I type more and more stuff.
