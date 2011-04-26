@@ -29,6 +29,7 @@ recurved
 TODO (possibly)
 ---------------
 
+- add installation instructions
 - add license
 - make annotation pane not fade when keyboard focus is in it
     - refactor this into the first version of Kogluktualuk
