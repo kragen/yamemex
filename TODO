@@ -30,3 +30,4 @@ D make a page to show all the annotations
    http://www.facebook.com/event.php?eid=109614559124178&notif_t=event_invite
 - make "see all" link be text-align:center because it looks great on
    http://www.pehub.com/102796/concern-grows-over-founders-cashing-out-too-much-too-early/
+- it doesn’t work on framesets, e.g. http://thread.gmane.org/gmane.linux.kernel/1126136
