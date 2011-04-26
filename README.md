@@ -22,7 +22,7 @@ BUGS
 Rejected names
 --------------
 
-Rubric Rubricator Gourtmet Imhotep Amanuensis yawas yats yanhoo
+Rubric Rubricator Gourmet Imhotep Amanuensis yawas yats yanhoo
 Houyhnhm yafs GNN Pathfinder Bumppo Leatherstocking Memex compoundbow
 recurved
 
