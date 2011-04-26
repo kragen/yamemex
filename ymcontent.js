@@ -31,6 +31,9 @@ chrome.extension.sendRequest( {getAnnotationsFor: location.href}
               .click(openAnnotationWindow)
              )
 
+      .hover(function() { thing.animate({opacity: 0.95}) },
+             function() { thing.animate({opacity: 0.5}) })
+
       .appendTo(document.body)
 
       ;
