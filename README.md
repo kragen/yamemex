@@ -29,6 +29,8 @@ recurved
 TODO (possibly)
 ---------------
 
+- make annotation pane not fade when keyboard focus is in it
+    - refactor this into the first version of Kogluktualuk
 - smoothly animating open annotation popup
 - growing annotation popup taller as you type text into it
 - focusing annotation popup when it opens
