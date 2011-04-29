@@ -9,7 +9,7 @@ chrome.extension.sendRequest( {getAnnotationsFor: location.href}
                               , function(annotation) {
     ourAnnotation = annotation;
 
-    thing = $('<div/>')
+    thing = $('<div class="yamemex"/>')
       .css({ position: 'fixed'
            , top: '40px'
            , right: '0px'
@@ -40,18 +40,20 @@ chrome.extension.sendRequest( {getAnnotationsFor: location.href}
 });
 
 function openAnnotationWindow() {
-    thing.css({display: ''}).empty().append(
-        $('<textarea/>')
+    var ta = $('<textarea/>')
         .val(ourAnnotation || 'Type your annotations here.')
         .css({display: 'block'})
         .keyup(sendAnnotation)
-    )
+    ;
+    thing.css({display: ''}).empty()
+    .append(ta)
     .append(
         $('<a>see all annotations</a>')
             .attr('href', chrome.extension.getURL('blog.html'))
             .attr('target', '_blank')
     )
     ;
+    ta.focus();
 }
 
 chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {

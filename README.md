@@ -34,6 +34,7 @@ DONE
 - icon on page to indicate that there are annotations
 - add installation instructions
 - add license
+- focusing annotation popup when it opens
 
 BUGS
 ----
@@ -53,7 +54,6 @@ recurved
 TODO (possibly)
 ---------------
 
-- focusing annotation popup when it opens
 - make annotation pane not fade when keyboard focus is in it
     - refactor this into the first version of Kogluktualuk
 - smoothly animating open annotation popup
