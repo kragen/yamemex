@@ -1,7 +1,27 @@
-yamemex provides a little margin in which you can jot notes.  It’s an
+yamemex provides a little margin for Chromium (or Google Chrome)
+in which you can jot notes about the web page you’re reading.  It’s an
 annotation-centered take on bookmarking.  This version is very
 preliminary, but it already provides a reverse-chronological view of
 your bookmark annotations.
+
+To install
+----------
+
+At some point soon, I’ll put up .crx files that you can download and
+install with just a click.  It's not quite ready for that, though.
+
+1. Put this source directory somewhere, like /home/bob/yamemex.  (You
+   can download it from Github with `git clone
+   git://github.com/kragen/yamemex.git`.)
+2. In Chromium, from the menu, pick Tools → Extensions.
+3. On the Extensions page, if necessary, click the [+] next to
+   Developer Mode to enable Developer Mode.
+4. Click the [ Load unpacked extension... ] button on the left side of
+   the Extensions page.
+5. Pick the directory containing this README file.
+
+You should see the yamemex icon appear to the left of the wrench icon
+that opens Chrome’s menu.
 
 DONE
 ----
@@ -18,6 +38,7 @@ BUGS
 - malicious JavaScript in a web page can spy on your annotation
 - annotation button doesn’t work until page finishes loading
 - doesn’t work on framesets
+- add installation instructions
 
 Rejected names
 --------------
@@ -29,7 +50,6 @@ recurved
 TODO (possibly)
 ---------------
 
-- add installation instructions
 - add license
 - make annotation pane not fade when keyboard focus is in it
     - refactor this into the first version of Kogluktualuk
