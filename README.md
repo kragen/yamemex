@@ -35,6 +35,8 @@ DONE
 - add installation instructions
 - add license
 - focusing annotation popup when it opens
+- auto-selecting placeholder text so you can just start typing instead
+  of working to delete the placeholder text for a new annotation
 
 BUGS
 ----
@@ -62,8 +64,6 @@ TODO (possibly)
 - dismissing annotation popup
 - storing original date for annotations so they stay in order (perhaps
   linked from latest date)
-- auto-selecting placeholder text so you can just start typing instead
-  of working to delete the placeholder text for a new annotation
 - running when page starts loading, rather than when it finishes loading
 - handling URL changes that don't reload the page
 - centering "see all" link

@@ -54,6 +54,7 @@ function openAnnotationWindow() {
     )
     ;
     ta.focus();
+    if (!ourAnnotation) ta[0].select();
 }
 
 chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
