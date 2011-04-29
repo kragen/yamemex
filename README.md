@@ -32,6 +32,8 @@ DONE
   popup in-page
 - reverse-chronological view in browser
 - icon on page to indicate that there are annotations
+- add installation instructions
+- add license
 
 BUGS
 ----
@@ -40,8 +42,6 @@ BUGS
 - malicious JavaScript in a web page can spy on your annotation
 - annotation button doesn’t work until page finishes loading
 - doesn’t work on framesets
-- add installation instructions
-- add license
 
 Rejected names
 --------------
