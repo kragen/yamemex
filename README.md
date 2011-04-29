@@ -4,6 +4,8 @@ annotation-centered take on bookmarking.  This version is very
 preliminary, but it already provides a reverse-chronological view of
 your bookmark annotations.
 
+It’s free software under the MIT X11 License.
+
 To install
 ----------
 
@@ -39,6 +41,7 @@ BUGS
 - annotation button doesn’t work until page finishes loading
 - doesn’t work on framesets
 - add installation instructions
+- add license
 
 Rejected names
 --------------
@@ -50,12 +53,11 @@ recurved
 TODO (possibly)
 ---------------
 
-- add license
+- focusing annotation popup when it opens
 - make annotation pane not fade when keyboard focus is in it
     - refactor this into the first version of Kogluktualuk
 - smoothly animating open annotation popup
 - growing annotation popup taller as you type text into it
-- focusing annotation popup when it opens
 - hiding annotations from the page in an iframe
 - dismissing annotation popup
 - storing original date for annotations so they stay in order (perhaps
