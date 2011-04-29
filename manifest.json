@@ -1,5 +1,5 @@
 { "name": "yamemex"
-, "version": "4.0"
+, "version": "5.0"
 , "description": "Yet another approximation of the Memex: provides a space for making paths of annotations through web pages."
 , "browser_action": 
   { "default_icon": "write.png"
