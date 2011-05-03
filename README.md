@@ -57,14 +57,16 @@ recurved
 TODO (possibly)
 ---------------
 
+- make blog view not look like shit
+- make blog view run a little bit faster
+- storing original date for annotations so they stay in order (perhaps
+  linked from latest date)
 - make annotation pane not fade when keyboard focus is in it
     - refactor this into the first version of Kogluktualuk
 - smoothly animating open annotation popup
 - growing annotation popup taller as you type text into it
 - hiding annotations from the page in an iframe
 - dismissing annotation popup
-- storing original date for annotations so they stay in order (perhaps
-  linked from latest date)
 - running when page starts loading, rather than when it finishes loading
 - handling URL changes that don't reload the page
 - centering "see all" link
