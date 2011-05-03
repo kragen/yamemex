@@ -14,8 +14,9 @@ function renderBlog() {
            for (var ii = 0; ii < results.rows.length; ii++) {
                var row = results.rows.item(ii);
                dest.append($('<li/>')
-                           .text(row.annotation + ' ')
-                           .append($('<a>link</a>').attr('href', row.url)))
+                           .append($('<a/>').attr('href', row.url).text(row.title || 'link'))
+                           .append($('<span class="annotation"/>').text(' ' + row.annotation))
+                          )
            }
        }
        );
