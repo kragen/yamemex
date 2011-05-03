@@ -64,5 +64,6 @@ chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
 function sendAnnotation() {
     chrome.extension.sendRequest({ updateAnnotationsFor: location.href
                                  , annotations: this.value
+                                 , title: document.title
                                  });
 }

@@ -14,10 +14,13 @@ function getAnnotation(url, callback) {
     });
 }
 
-function setAnnotation(url, annotation) {
-    sql( 'replace into annotations (timestamp, url, annotation) ' +
-         'values                   (datetime(), ?,       ?    ) '
-       , [                                     url, annotation]
+function setAnnotation(request) {
+    sql( 'replace into annotations (timestamp, url, annotation, title) ' +
+         'values                   (datetime(), ?,       ?    ,   ?  ) '
+       , [                              request.updateAnnotationsFor
+         ,                                      request.annotations
+         ,                                                     request.title
+         ]
        );
 }
 
@@ -29,7 +32,7 @@ var annotations = {
 chrome.extension.onRequest.addListener(
     function(request, sender, sendResponse) {
         if (request.updateAnnotationsFor === undefined) return;
-        setAnnotation(request.updateAnnotationsFor, request.annotations);
+        setAnnotation(request);
     }
 );
 
@@ -37,7 +40,6 @@ chrome.extension.onRequest.addListener(
     function(request, sender, sendResponse) {
         if (request.getAnnotationsFor === undefined) return;
         getAnnotation(request.getAnnotationsFor, function(row) {
-            console.log(row);
             if (!row) {
                 sendResponse(null);
             } else {

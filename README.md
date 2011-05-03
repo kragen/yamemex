@@ -37,6 +37,7 @@ DONE
 - focusing annotation popup when it opens
 - auto-selecting placeholder text so you can just start typing instead
   of working to delete the placeholder text for a new annotation
+- saving page titles
 
 BUGS
 ----
@@ -69,7 +70,6 @@ TODO (possibly)
 - centering "see all" link
 - saving favicons
 - saving screenshots
-- saving page titles
 - archiving page contents
 - Markdown or similar formatting for annotations
 - adding date headers to the reverse-chronological view
