@@ -12,15 +12,22 @@ To install
 At some point soon, I’ll put up .crx files that you can download and
 install with just a click.  It's not quite ready for that, though.
 
-1. Put this source directory somewhere, like /home/bob/yamemex.  (You
+1. 
+   Put this source directory somewhere, like /home/bob/yamemex.  (You
    can download it from Github with `git clone
    git://github.com/kragen/yamemex.git`.)
-2. In Chromium, from the menu, pick Tools → Extensions.
-3. On the Extensions page, if necessary, click the [+] next to
+2. 
+   Load the submodules: `cd yamemex; git submodule init; git submodule update`.
+3. 
+   In Chromium, from the menu, pick Tools → Extensions.
+4. 
+   On the Extensions page, if necessary, click the [+] next to
    Developer Mode to enable Developer Mode.
-4. Click the [ Load unpacked extension... ] button on the left side of
+5. 
+   Click the [ Load unpacked extension... ] button on the left side of
    the Extensions page.
-5. Pick the directory containing this README file.
+6. 
+   Pick the directory containing this README file.
 
 You should see the yamemex icon appear to the left of the wrench icon
 that opens Chrome’s menu.
@@ -38,6 +45,7 @@ DONE
 - auto-selecting placeholder text so you can just start typing instead
   of working to delete the placeholder text for a new annotation
 - saving page titles
+- make blog view run a little bit faster
 
 BUGS
 ----
@@ -58,7 +66,6 @@ TODO (possibly)
 ---------------
 
 - make blog view not look like shit
-- make blog view run a little bit faster
 - storing original date for annotations so they stay in order (perhaps
   linked from latest date)
 - make annotation pane not fade when keyboard focus is in it
