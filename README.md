@@ -66,6 +66,7 @@ TODO (possibly)
 ---------------
 
 - make blog view not look like shit
+- make icon do something when on a new-tab page
 - storing original date for annotations so they stay in order (perhaps
   linked from latest date)
 - make annotation pane not fade when keyboard focus is in it
