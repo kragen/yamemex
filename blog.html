@@ -1,5 +1,5 @@
 All annotations!
-<ul id="entries"></ul>
+<div id="entries"></ul>
 <script src="jquery-1.5.2.min.js"></script>
 <script src="db.js"></script>
 <script>
@@ -10,8 +10,8 @@ function renderBlog() {
     sql( 'select * from annotations order by timestamp desc'
        , []
        , function(t, results) {
-           var dest = $('#entries');
-           dest.empty();
+           var dest = $('<ul/>');
+
            for (var ii = 0; ii < results.rows.length; ii++) {
                var row = results.rows.item(ii);
                dest.append($('<li/>')
@@ -22,6 +22,9 @@ function renderBlog() {
                                    .text(' ' + row.annotation))
                           )
            }
+
+           dest.appendTo($('#entries'));
+
            var end = new Date();
            $('<p/>')
                .text( 'Rendering '+results.rows.length
