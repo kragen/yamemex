@@ -6,6 +6,7 @@ All annotations!
 $(renderBlog);
 
 function renderBlog() {
+    var start = new Date();
     sql( 'select * from annotations order by timestamp desc'
        , []
        , function(t, results) {
@@ -14,10 +15,22 @@ function renderBlog() {
            for (var ii = 0; ii < results.rows.length; ii++) {
                var row = results.rows.item(ii);
                dest.append($('<li/>')
-                           .append($('<a/>').attr('href', row.url).text(row.title || 'link'))
-                           .append($('<span class="annotation"/>').text(' ' + row.annotation))
+                           .append($('<a/>')
+                                   .attr('href', row.url)
+                                   .text(row.title || 'link'))
+                           .append($('<span class="annotation"/>')
+                                   .text(' ' + row.annotation))
                           )
            }
+           var end = new Date();
+           $('<p/>')
+               .text( 'Rendering '+results.rows.length
+                    + ' items took '
+                    + ((end.getTime() - start.getTime())/1000)
+                    + ' seconds.'
+                    )
+               .appendTo($('body'))
+           ;
        }
        );
 }
