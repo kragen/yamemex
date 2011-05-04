@@ -1,4 +1,4 @@
-All annotations!
+<h1>all yamemex annotations for web pages</h1>
 <div id="entries"></ul>
 <script src="jquery-1.5.2.min.js"></script>
 <script src="mustache/mustache.js"></script>
@@ -7,31 +7,42 @@ All annotations!
 $(renderBlog);
 
 var template = 
-    '<ul>' +
-    '  {{#bookmarks}}' +
-    '    <li><a href="{{url}}">{{title}}</a> ' +
-    '      <span class="annotation">{{annotation}}</span>' +
-    '    </li>' +
-    '  {{/bookmarks}}' +
-    '</ul>' ;
+    '{{#sections}}' +
+    '<h2>{{date}}</h2>' +
+    '  <ul>' +
+    '    {{#bookmarks}}' +
+    '      <li><a href="{{url}}">{{title}}</a> ' +
+    '        <span class="annotation">{{annotation}}</span>' +
+    '      </li>' +
+    '    {{/bookmarks}}' +
+    '  </ul>' +
+    '{{/sections}}' ;
 
 function renderBlog() {
     var start = new Date();
-    sql( 'select * from annotations order by timestamp desc'
+    sql( 'select *, date(timestamp) as date from annotations ' +
+         'order by timestamp desc'
        , []
        , function(t, results) {
-           var bookmarks = [];
+           var sections = [];
+           var section = { };
 
            for (var ii = 0; ii < results.rows.length; ii++) {
                var row = results.rows.item(ii);
-               bookmarks.push({ url: row.url
-                              , title: row.title || '<link>'
-                              , annotation: row.annotation
-                              });
+
+               if (row.date !== section.date) {
+                   section = { date: row.date, bookmarks: [] };
+                   sections.push(section);
+               }
+
+               section.bookmarks.push({ url: row.url
+                                      , title: row.title || '<link>'
+                                      , annotation: row.annotation
+                                      });
            }
 
            $('#entries').html(Mustache.to_html(template, 
-                                               {bookmarks: bookmarks}));
+                                               {sections: sections}));
 
            var end = new Date();
            $('<p/>')
