@@ -46,6 +46,7 @@ DONE
   of working to delete the placeholder text for a new annotation
 - saving page titles
 - make blog view run a little bit faster
+- running when page starts loading, rather than when it finishes loading
 
 BUGS
 ----
@@ -65,6 +66,9 @@ recurved
 TODO (possibly)
 ---------------
 
+- avoid empty-string unclickable titles in blog view
+- stop "Type your annotations here." annotations from being added when
+  you alt-tab away from an unwanted annotation window.
 - make blog view not look like shit
 - make icon do something when on a new-tab page
 - storing original date for annotations so they stay in order (perhaps
@@ -75,7 +79,6 @@ TODO (possibly)
 - growing annotation popup taller as you type text into it
 - hiding annotations from the page in an iframe
 - dismissing annotation popup
-- running when page starts loading, rather than when it finishes loading
 - handling URL changes that don't reload the page
 - centering "see all" link
 - saving favicons

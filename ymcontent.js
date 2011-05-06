@@ -5,9 +5,15 @@ var iconSize = '32px';
 var ourAnnotation = null;
 var thing = null;
 
-chrome.extension.sendRequest( {getAnnotationsFor: location.href}
-                              , function(annotation) {
-    ourAnnotation = annotation;
+// This is a kludge to insert our thing into the body as early as
+// possible.  We don’t actually get notified that the document body
+// has been created, as far as I can tell, so we have to poll.
+
+var bodyPoller = setInterval(insertionListener, 50);
+
+function insertionListener() {
+    if (!document.body) return;
+    clearInterval(bodyPoller);
 
     thing = $('<div class="yamemex"/>')
       .css({ position: 'fixed'
@@ -22,7 +28,7 @@ chrome.extension.sendRequest( {getAnnotationsFor: location.href}
            , borderBottom: border
            , zIndex: 2147483646
            , opacity: 0.5
-           , display: annotation ? '' : 'none'
+           , display: 'none'
            })
 
       .append($('<img/>')
@@ -37,7 +43,19 @@ chrome.extension.sendRequest( {getAnnotationsFor: location.href}
       .appendTo(document.body)
 
       ;
+
+    updateDisplayedness();
+}
+
+chrome.extension.sendRequest( {getAnnotationsFor: location.href}
+                              , function(annotation) {
+    ourAnnotation = annotation;
+    updateDisplayedness();
 });
+
+function updateDisplayedness() {
+    if (ourAnnotation && thing) thing.css({display: ''});
+}
 
 function openAnnotationWindow() {
     var ta = $('<textarea/>')
