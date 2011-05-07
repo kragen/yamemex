@@ -68,6 +68,22 @@ recurved
 TODO (possibly)
 ---------------
 
+- refactor this database stuff, because this is totally fucking
+  ridiculous. Adding the “public” checkbox involved editing seven
+  places:
+    - db.js, to add the column and an index on it;
+    - setAnnotation in yamemex.html, to copy it from the request into
+      the database;
+    - the getAnnotationsFor handler in yamemex.html, to copy it from
+      the database into a request;
+    - the global variables in ymcontent.js, to have a place to store
+      it in the page;
+    - the handler for the getAnnotationsFor response in ymcontent, to
+      copy it from the response into those variables;
+    - openAnnotationWindow in ymcontent, to add the HTML and copy from
+      the variable into the HTML state;
+    - sendAnnotation in ymcontent, to copy from the global variable to
+      the updateAnnotationsFor request.
 - avoid empty-string unclickable titles in blog view
 - stop "Type your annotations here." annotations from being added when
   you alt-tab away from an unwanted annotation window.
