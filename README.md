@@ -49,6 +49,8 @@ DONE
 - running when page starts loading, rather than when it finishes loading
 - adding date headers to the reverse-chronological view
 - a “public” checkbox to allow private annotations
+- giving blog view a basic stylesheet to improve its readability
+  slightly.
 
 BUGS
 ----
