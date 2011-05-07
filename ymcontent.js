@@ -63,13 +63,15 @@ function openAnnotationWindow() {
         .css({display: 'block'})
         .keyup(sendAnnotation)
     ;
-    thing.css({display: ''}).empty()
-    .append(ta)
-    .append(
-        $('<a>see all annotations</a>')
-            .attr('href', chrome.extension.getURL('blog.html'))
-            .attr('target', '_blank')
-    )
+    thing
+        .css({display: ''})
+        .empty()
+        .append(ta)
+        .append(
+            $('<a>see all annotations</a>')
+                .attr('href', chrome.extension.getURL('blog.html'))
+                .attr('target', '_blank')
+        )
     ;
     ta.focus();
     if (!ourAnnotation) ta[0].select();
