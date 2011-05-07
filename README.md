@@ -102,7 +102,28 @@ TODO (possibly)
   #8 would involve a simple model-view framework, and unifying #1 with
   them would involve a Django-style schema definition EDSL in JS, so I
   don't feel as bad about those.
-- avoid empty-string unclickable titles in blog view
+- avoid empty-string unclickable titles in blog view (oh shit. the
+  title in the database for this one is ‘{{ mustache }}’. I think that
+  means mustache.js is fucking with me and double-interpreting the
+  fucking variable.)  I'm pretty sure this is a bug because it doesn’t
+  seem to be documented and it isn't represented in the examples
+  directory used for unit tests. Minimal reproduction:
+
+        Mustache.to_html('{{b}}', {b: '{{c}x}' }) -> '{{c}x}'
+        Mustache.to_html('{{#a}}{{b}}{{/a}}', {a: [{b: '{{c}x}' }]}) -> '{{c}x}'
+        Mustache.to_html('{{b}}', {b: '{{c}}' }) -> '{{c}}'
+        Mustache.to_html('{{#a}}{{b}}{{/a}}', {a: [{b: '{{c}}' }]}) -> '' (wrong)
+
+  Looks like the problem in Mustache.js is that it re-interprets the
+  HTML coming out of the inner section as a template:
+
+        var html = this.render_section(template, context, partials);
+        if(in_recursion) {
+          return this.render_tags(html, context, partials, in_recursion);
+        }
+
+        this.render_tags(html, context, partials, in_recursion);
+
 - stop "Type your annotations here." annotations from being added when
   you alt-tab away from an unwanted annotation window.  This will be a
   lot easier when we can just copy the object being edited and then
