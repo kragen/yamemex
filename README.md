@@ -133,3 +133,10 @@ write.svg and write.png are
 <http://www.openclipart.org/detail/79363>, released to the public
 domain by AK/aungkarns under the CC0 PD Dedication
 <http://creativecommons.org/publicdomain/zero/1.0/>.
+
+Copyright
+---------
+
+Aside from the graphics mentioned above, yamemex is copyright 2011
+Kragen Javier Sitaker, and is licensed under the MIT X11 license, as
+described in MIT-LICENSE.TXT.
