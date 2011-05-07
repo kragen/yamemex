@@ -73,22 +73,40 @@ TODO (possibly)
 - refactor this database stuff, because this is totally fucking
   ridiculous. Adding the “public” checkbox involved editing seven
   places:
-    - db.js, to add the column and an index on it;
-    - setAnnotation in yamemex.html, to copy it from the request into
-      the database;
-    - the getAnnotationsFor handler in yamemex.html, to copy it from
-      the database into a request;
-    - the global variables in ymcontent.js, to have a place to store
-      it in the page;
-    - the handler for the getAnnotationsFor response in ymcontent, to
-      copy it from the response into those variables;
-    - openAnnotationWindow in ymcontent, to add the HTML and copy from
-      the variable into the HTML state;
-    - sendAnnotation in ymcontent, to copy from the global variable to
-      the updateAnnotationsFor request.
+    1. db.js, to add the column and an index on it;
+    2. setAnnotation in yamemex.html, to copy it from the request into
+       the database;
+    3. the getAnnotationsFor handler in yamemex.html, to copy it from
+       the database into a request (already fixed);
+    4. the global variables in ymcontent.js, to have a place to store
+       it in the page;
+    5. the handler for the getAnnotationsFor response in ymcontent, to
+       copy it from the response into those variables;
+    6. openAnnotationWindow in ymcontent, to add the HTML and copy from
+       the variable into the HTML state;
+    7. sendAnnotation in ymcontent, to copy from the global variable to
+       the updateAnnotationsFor request;
+    8. sendAnnotation in ymcontent, to copy from the HTML back into
+       the object.
+  Fixing this should involve the following steps:
+    - put ourAnnotation and ourPublic into one object, eliminating #4.
+    - put the URL and title in there too
+    - change the request sent to the background page to just have that
+      object (the one to insert into the database), eliminating #7.
+    - changing the database code to insert arbitrary random properties
+      on the object it’s handed instead of a fixed set of properties,
+      eliminating #2.
+    - changing the getAnnotationsFor handler to send an object
+      containing all columns of the row, eliminating #5.
+  This would leave only duplications #1, #6, and #8.  Unifying #6 and
+  #8 would involve a simple model-view framework, and unifying #1 with
+  them would involve a Django-style schema definition EDSL in JS, so I
+  don't feel as bad about those.
 - avoid empty-string unclickable titles in blog view
 - stop "Type your annotations here." annotations from being added when
-  you alt-tab away from an unwanted annotation window.
+  you alt-tab away from an unwanted annotation window.  This will be a
+  lot easier when we can just copy the object being edited and then
+  see if anything about it has changed, and not send a message if not.
 - make blog view not look like shit
 - make icon do something when on a new-tab page
 - storing original date for annotations so they stay in order (perhaps
@@ -108,7 +126,8 @@ TODO (possibly)
 - publishing your bookmarks as a blog on the web
 - saving previous versions of annotations
 - syncing across multiple browsers
-- tagging
+- tagging: Twitter-like, #hashtags in the blog view will be links to
+  filtered views that show only things tagged with that hashtag.
 - saving highlighted quotations from pages
 - automatically parsing dates from pages and displaying bookmarks in a calendar view
 - Lotus-Agenda-like auto-tagging based on user-specified keywords
