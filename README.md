@@ -47,6 +47,8 @@ DONE
 - saving page titles
 - make blog view run a little bit faster
 - running when page starts loading, rather than when it finishes loading
+- adding date headers to the reverse-chronological view
+- a “public” checkbox to allow private annotations
 
 BUGS
 ----
@@ -85,9 +87,7 @@ TODO (possibly)
 - saving screenshots
 - archiving page contents
 - Markdown or similar formatting for annotations
-- adding date headers to the reverse-chronological view
 - publishing your bookmarks as a blog on the web
-- a “private” checkbox for private annotations
 - saving previous versions of annotations
 - syncing across multiple browsers
 - tagging

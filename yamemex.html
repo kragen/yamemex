@@ -15,11 +15,14 @@ function getAnnotation(url, callback) {
 }
 
 function setAnnotation(request) {
-    sql( 'replace into annotations (timestamp, url, annotation, title) ' +
-         'values                   (datetime(), ?,       ?    ,   ?  ) '
-       , [                              request.updateAnnotationsFor
-         ,                                      request.annotations
-         ,                                                     request.title
+    sql( 'replace into annotations ' +
+         '    (timestamp, url, annotation, title, public) ' +
+         'values ' +
+         '    (datetime(), ?,       ?    ,   ?  ,   ?   ) '
+       , [        request.updateAnnotationsFor
+         ,                   request.annotations
+         ,                           request.title
+         ,                                  request['public']
          ]
        );
 }
@@ -41,9 +44,12 @@ chrome.extension.onRequest.addListener(
         if (request.getAnnotationsFor === undefined) return;
         getAnnotation(request.getAnnotationsFor, function(row) {
             if (!row) {
-                sendResponse(null);
+                sendResponse({'public': 1});
             } else {
-                sendResponse(row.annotation);
+                sendResponse({ annotation: row.annotation
+                             , 'public': row.public
+                             , title: row.title
+                             });
             }
         });
     }

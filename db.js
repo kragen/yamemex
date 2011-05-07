@@ -34,3 +34,9 @@ sql('create index if not exists blog2 on annotations ( timestamp ' +
     '                                                , title' +
     '                                                )'
 );
+
+sql('alter table annotations add column public boolean', [], null, nop);
+
+// This is for upgrading bookmarks created before the public column.
+sql('create index if not exists puburl on annotations (public, url)');
+sql('update annotations set public = 1 where public is null');
