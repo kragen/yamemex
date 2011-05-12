@@ -2,9 +2,10 @@ var border = '1px solid black';
 var borderRadius = '3px';
 var iconSize = '32px';
 
-var ourAnnotation = null;
+var annotationRecord = null;
+
+// jQuery objects
 var ourTextarea = null;
-var ourPublic = null;
 var ourCb = null;
 var thing = null;
 
@@ -52,23 +53,25 @@ function insertionListener() {
 
 chrome.extension.sendRequest( {getAnnotationsFor: location.href}
                               , function(row) {
-    ourAnnotation = row.annotation;
-    ourPublic = row['public'];  // I forget if public is a reserved word.
+    annotationRecord = row;
     updateDisplayedness();
 });
 
 function updateDisplayedness() {
-    if (ourAnnotation && thing) thing.css({display: ''});
+    if (annotationRecord && annotationRecord.annotation && thing) {
+        thing.css({display: ''});
+    }
 }
 
 function openAnnotationWindow() {
     ourTextarea = $('<textarea/>')
-        .val(ourAnnotation || 'Type your annotations here.')
+        .val(annotationRecord.annotation || 'Type your annotations here.')
         .css({display: 'block'})
         .keyup(sendAnnotation)
     ;
     ourCb = $('<input type="checkbox"/>');
-    ourCb[0].checked = ourPublic;    
+    // I forget if ‘public’ is a reserved word.
+    ourCb[0].checked = annotationRecord['public'];
     ourCb.change(sendAnnotation);
 
 
@@ -84,7 +87,7 @@ function openAnnotationWindow() {
         )
     ;
     ourTextarea.focus();
-    if (!ourAnnotation) ta[0].select();
+    if (!annotationRecord.annotation) ta[0].select();
 }
 
 chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
@@ -92,11 +95,12 @@ chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
 });
 
 function sendAnnotation() {
-    ourAnnotation = ourTextarea.val();
-    ourPublic = ourCb[0].checked ? 1 : 0;
+    annotationRecord.annotation = ourTextarea.val();
+    annotationRecord['public'] = ourCb[0].checked ? 1 : 0;
     chrome.extension.sendRequest({ updateAnnotationsFor: location.href
-                                 , annotations: ourAnnotation
+                                    // XXX 'annotations' vs. 'annotation'
+                                 , annotations: annotationRecord.annotation
                                  , title: document.title
-                                 , 'public': ourPublic
+                                 , 'public': annotationRecord['public']
                                  });
 }

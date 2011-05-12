@@ -1,5 +1,6 @@
-<h1>Your Yamemex Annotations</h1>
-<div id="entries"></div>
+<!doctype html>
+<html><head>
+    <title>all yamemex annotations for web pages</title>
 <style>
 /* New stylesheet inspired by the one on <http://worrydream.com/KillMath/>
 */
@@ -40,61 +41,65 @@ li { margin-top: 1em; margin-bottom: 1em; line-height: 1.7 }
 a { color: #933 }
 
 </style>
-<script src="jquery-1.5.2.min.js"></script>
-<script src="mustache/mustache.js"></script>
-<script src="db.js"></script>
-<script>
-$(renderBlog);
+    <script src="jquery-1.5.2.min.js"></script>
+    <script src="mustache/mustache.js"></script>
+    <script src="db.js"></script>
+    <script>
+    $(renderBlog);
 
-var template = 
-    '{{#sections}}' +
-    '<h2>{{date}}</h2>' +
-    '  <ul>' +
-    '    {{#bookmarks}}' +
-    '      <li><a href="{{url}}">{{title}}</a> ' +
-    '        <span class="annotation">{{annotation}}</span>' +
-    '      </li>' +
-    '    {{/bookmarks}}' +
-    '  </ul>' +
-    '{{/sections}}' ;
+    var template = 
+        '{{#sections}}' +
+        '<h2>{{date}}</h2>' +
+        '  <ul>' +
+        '    {{#bookmarks}}' +
+        '      <li><a href="{{url}}">{{title}}</a> ' +
+        '        <span class="annotation">{{annotation}}</span>' +
+        '      </li>' +
+        '    {{/bookmarks}}' +
+        '  </ul>' +
+        '{{/sections}}' ;
 
-function renderBlog() {
-    var start = new Date();
-    sql( 'select *, date(timestamp) as date from annotations ' +
-         'order by timestamp desc'
-       , []
-       , function(t, results) {
-           var sections = [];
-           var section = { };
+    function renderBlog() {
+        var start = new Date();
+        sql( 'select *, date(timestamp) as date from annotations ' +
+             'order by timestamp desc'
+           , []
+           , function(t, results) {
+               var sections = [];
+               var section = { };
 
-           for (var ii = 0; ii < results.rows.length; ii++) {
-               var row = results.rows.item(ii);
+               for (var ii = 0; ii < results.rows.length; ii++) {
+                   var row = results.rows.item(ii);
 
-               if (row.date !== section.date) {
-                   section = { date: row.date, bookmarks: [] };
-                   sections.push(section);
+                   if (row.date !== section.date) {
+                       section = { date: row.date, bookmarks: [] };
+                       sections.push(section);
+                   }
+
+                   section.bookmarks.push({ url: row.url
+                                          , title: row.title || '<link>'
+                                          , annotation: row.annotation
+                                          });
                }
 
-               section.bookmarks.push({ url: row.url
-                                      , title: row.title || '<link>'
-                                      , annotation: row.annotation
-                                      });
+               $('#entries').html(Mustache.to_html(template, 
+                                                   {sections: sections}));
+
+               var end = new Date();
+               $('<p/>')
+                   .text( 'Rendering '+results.rows.length
+                        + ' items took '
+                        + ((end.getTime() - start.getTime())/1000)
+                        + ' seconds.'
+                        )
+                   .appendTo($('body'))
+               ;
            }
+           );
+    }
 
-           $('#entries').html(Mustache.to_html(template, 
-                                               {sections: sections}));
-
-           var end = new Date();
-           $('<p/>')
-               .text( 'Rendering '+results.rows.length
-                    + ' items took '
-                    + ((end.getTime() - start.getTime())/1000)
-                    + ' seconds.'
-                    )
-               .appendTo($('body'))
-           ;
-       }
-       );
-}
-
-</script>
+    </script>
+</head><body>
+    <h1>Your Yamemex Annotations</h1>
+    <div id="entries"></div>
+</body></html>
