@@ -1,22 +1,44 @@
-<h1>all yamemex annotations for web pages</h1>
+<h1>Your Yamemex Annotations</h1>
 <div id="entries"></div>
 <style>
-body { margin: 0; padding: 0; font-family: "URW Palladio L", Palatino }
-h1 { 
-    background-color: #c99;
-    letter-spacing: 0.3em;
-    text-align: right;
-    color: white;
-    padding: 0.5em;
+/* New stylesheet inspired by the one on <http://worrydream.com/KillMath/>
+*/
+@font-face {
+    font-family: "CandalRegular";
+    src: url('Candal/Candal.ttf') format('truetype');
 }
+
+body { 
+    margin: 0 auto;
+    padding: 0;
+    font: 13px Optima, Helvetica, Arial, sans-serif;
+    color: #666;
+    width: 50em;
+}
+
 h1, h2 { 
-    margin: 0; 
-    text-shadow: rgba(255,255,255,0.7) 2px 2px 6px; /* color x y radius */
+    font-family: "CandalRegular";
+    text-align: center;
+    color: #600;
+    padding: 0;
 }
-h2 { background-color: #fcc; color: #666; padding: 0 0.5em; }
-li span { color: #c66; font-size: 0.9em }
-ul { max-width: 40em; list-style-type: none }
-li { margin-top: 0.5em; line-height: 1.2em }
+
+h1 {
+    font-size: 2em;
+    margin-top: 1.57em;
+}
+
+h2 { 
+    font-size: 1.5em;
+    margin-top: 2em;
+}
+
+ul, li { margin: 0; padding: 0 }
+ul { list-style-type: none }
+li { margin-top: 1em; margin-bottom: 1em; line-height: 1.7 }
+
+a { color: #933 }
+
 </style>
 <script src="jquery-1.5.2.min.js"></script>
 <script src="mustache/mustache.js"></script>

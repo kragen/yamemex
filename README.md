@@ -49,8 +49,7 @@ DONE
 - running when page starts loading, rather than when it finishes loading
 - adding date headers to the reverse-chronological view
 - a “public” checkbox to allow private annotations
-- giving blog view a basic stylesheet to improve its readability
-  slightly.
+- giving blog view a stylesheet to make it look good
 
 BUGS
 ----
@@ -89,7 +88,6 @@ TODO (possibly)
 - avoid empty-string unclickable titles in blog view
 - stop "Type your annotations here." annotations from being added when
   you alt-tab away from an unwanted annotation window.
-- make blog view not look like shit
 - make icon do something when on a new-tab page
 - storing original date for annotations so they stay in order (perhaps
   linked from latest date)
@@ -133,6 +131,12 @@ write.svg and write.png are
 <http://www.openclipart.org/detail/79363>, released to the public
 domain by AK/aungkarns under the CC0 PD Dedication
 <http://creativecommons.org/publicdomain/zero/1.0/>.
+
+The Candal font used for titles in blog.html is by Vernon Adams
+<http://www.newtypography.co.uk/> who has licensed it under the SIL
+Open Font License and made it available through the Google Web Fonts
+API for free download:
+<http://www.google.com/webfonts/family?family=Candal&subset=latin>.
 
 Copyright
 ---------
