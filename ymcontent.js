@@ -87,7 +87,7 @@ function openAnnotationWindow() {
         )
     ;
     ourTextarea.focus();
-    if (!annotationRecord.annotation) ta[0].select();
+    if (!annotationRecord.annotation) ourTextarea[0].select();
 }
 
 chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
