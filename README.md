@@ -141,7 +141,11 @@ TODO (possibly)
 - saving favicons
 - saving screenshots
 - archiving page contents
-- Markdown or similar formatting for annotations
+- Markdown or similar formatting for annotations.
+  <https://github.com/fivesixty/mdext> looks like the current home
+  page of the most-maintained version of Showdown, which seems like
+  the best implementation of Markdown in JS.  There’s a WYSIWYM editor
+  for it at <http://code.google.com/p/wmd-new/>.
 - publishing your bookmarks as a blog on the web
 - saving previous versions of annotations
 - syncing across multiple browsers
