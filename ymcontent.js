@@ -74,11 +74,16 @@ function openAnnotationWindow() {
     ourCb[0].checked = annotationRecord['public'];
     ourCb.change(sendAnnotation);
 
+    var closebox = $('<div>X</div>')
+        .click(function() { thing.css({display: 'none'}) })
+        .css({float: 'right'})
+    ;
 
     thing
         .css({display: ''})
         .empty()
         .append($('<span/>').append(ourCb).append(' Public'))
+        .append(closebox)
         .append(ourTextarea)
         .append(
             $('<a>see all annotations</a>')

@@ -50,6 +50,7 @@ DONE
 - adding date headers to the reverse-chronological view
 - a “public” checkbox to allow private annotations
 - giving blog view a stylesheet to make it look good
+- dismissing annotation popup
 
 BUGS
 ----
@@ -135,7 +136,6 @@ TODO (possibly)
 - smoothly animating open annotation popup
 - growing annotation popup taller as you type text into it
 - hiding annotations from the page in an iframe
-- dismissing annotation popup
 - handling URL changes that don't reload the page
 - centering "see all" link
 - saving favicons
