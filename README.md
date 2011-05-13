@@ -70,6 +70,8 @@ recurved
 TODO (possibly)
 ---------------
 
+- make annotation popup close button use some clip art from
+  openclipart
 - refactor this database stuff, because this is totally fucking
   ridiculous. Adding the “public” checkbox involved editing seven
   places:
@@ -124,6 +126,7 @@ TODO (possibly)
 
         this.render_tags(html, context, partials, in_recursion);
 
+- make titles editable
 - stop "Type your annotations here." annotations from being added when
   you alt-tab away from an unwanted annotation window.  This will be a
   lot easier when we can just copy the object being edited and then
@@ -185,6 +188,6 @@ API for free download:
 Copyright
 ---------
 
-Aside from the graphics mentioned above, yamemex is copyright 2011
+Aside from the graphics and font mentioned above, yamemex is copyright 2011
 Kragen Javier Sitaker, and is licensed under the MIT X11 license, as
 described in MIT-LICENSE.TXT.
