@@ -131,6 +131,7 @@ TODO (possibly)
   you alt-tab away from an unwanted annotation window.  This will be a
   lot easier when we can just copy the object being edited and then
   see if anything about it has changed, and not send a message if not.
+- automatically snarf publication date off the page
 - make icon do something when on a new-tab page
 - storing original date for annotations so they stay in order (perhaps
   linked from latest date)
