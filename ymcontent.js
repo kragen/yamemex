@@ -1,5 +1,5 @@
 var border = '1px solid black';
-var borderRadius = '3px';
+var borderRadius = '20px 8px';
 var iconSize = '32px';
 
 var annotationRecord = null;
