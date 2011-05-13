@@ -173,7 +173,7 @@ TODO (possibly)
 - Agenda-like grid views
 - full-text search
 - blog pagination
-- backends for del.icio.us and/or TiddlySpace
+- backends for del.icio.us and/or TiddlySpace and/or AtomPub and/or identi.ca and/or Twitter
 - contextual tags
 
 Acknowledgements
