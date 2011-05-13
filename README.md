@@ -75,6 +75,7 @@ TODO (possibly)
 - refactor this database stuff, because this is totally fucking
   ridiculous. Adding the “public” checkbox involved editing seven
   places:
+
     1. db.js, to add the column and an index on it;
     2. setAnnotation in yamemex.html, to copy it from the request into
        the database;
@@ -90,7 +91,9 @@ TODO (possibly)
        the updateAnnotationsFor request;
     8. sendAnnotation in ymcontent, to copy from the HTML back into
        the object.
-  Fixing this should involve the following steps:
+
+    Fixing this should involve the following steps:
+
     - put ourAnnotation and ourPublic into one object, eliminating #4.
     - put the URL and title in there too
     - change the request sent to the background page to just have that
@@ -100,10 +103,12 @@ TODO (possibly)
       eliminating #2.
     - changing the getAnnotationsFor handler to send an object
       containing all columns of the row, eliminating #5.
-  This would leave only duplications #1, #6, and #8.  Unifying #6 and
-  #8 would involve a simple model-view framework, and unifying #1 with
-  them would involve a Django-style schema definition EDSL in JS, so I
-  don't feel as bad about those.
+
+    This would leave only duplications #1, #6, and #8.  Unifying #6 
+    and #8 would involve a simple model-view framework, and unifying #1 with
+    them would involve a Django-style schema definition EDSL in JS, so I
+    don’t feel as bad about those.
+
 - avoid empty-string unclickable titles in blog view (oh shit. the
   title in the database for this one is ‘{{ mustache }}’. I think that
   means mustache.js is fucking with me and double-interpreting the
@@ -116,8 +121,8 @@ TODO (possibly)
         Mustache.to_html('{{b}}', {b: '{{c}}' }) -> '{{c}}'
         Mustache.to_html('{{#a}}{{b}}{{/a}}', {a: [{b: '{{c}}' }]}) -> '' (wrong)
 
-  Looks like the problem in Mustache.js is that it re-interprets the
-  HTML coming out of the inner section as a template:
+    Looks like the problem in Mustache.js is that it re-interprets the
+    HTML coming out of the inner section as a template:
 
         var html = this.render_section(template, context, partials);
         if(in_recursion) {
