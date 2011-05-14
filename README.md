@@ -199,6 +199,9 @@ Open Font License and made it available through the Google Web Fonts
 API for free download:
 <http://www.google.com/webfonts/family?family=Candal&subset=latin>.
 
+Thanks to Javier Candeira, Nadia Heninger, Joe Blaylock, and Beatrice
+Murch for their helpful feedback.
+
 Copyright
 ---------
 
