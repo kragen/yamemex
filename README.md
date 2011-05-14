@@ -2,7 +2,8 @@ yamemex provides a little margin for Chromium (or Google Chrome)
 in which you can jot notes about the web page you’re reading.  It’s an
 annotation-centered take on bookmarking.  This version is very
 preliminary, but it already provides a reverse-chronological view of
-your bookmark annotations.
+your bookmark annotations, and supports Twitter-style #hashtags 
+to categorize them.
 
 It’s free software under the MIT X11 License.
 
