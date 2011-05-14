@@ -75,6 +75,8 @@ TODO (possibly)
 
 - make annotation popup close button use some clip art from
   openclipart
+- add clickable recent tags
+- make blog view editable (!!)
 - refactor this database stuff, because this is totally fucking
   ridiculous. Adding the “public” checkbox involved editing seven
   places:
