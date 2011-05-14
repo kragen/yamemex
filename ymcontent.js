@@ -63,6 +63,12 @@ function updateDisplayedness() {
     }
 }
 
+function closeAnnotationWindow() {
+    thing.animate({width: 0}, {complete: function() { 
+        thing.css({display: 'none'});
+    }});
+}
+
 function openAnnotationWindow() {
     ourTextarea = $('<textarea/>')
         .val(annotationRecord.annotation || 'Type your annotations here.')
@@ -75,12 +81,12 @@ function openAnnotationWindow() {
     ourCb.change(sendAnnotation);
 
     var closebox = $('<div>X</div>')
-        .click(function() { thing.css({display: 'none'}) })
+        .click(closeAnnotationWindow)
         .css({float: 'right'})
     ;
 
     thing
-        .css({display: ''})
+        .css({display: '', width: ''})
         .empty()
         .append($('<span/>').append(ourCb).append(' Public'))
         .append(closebox)
