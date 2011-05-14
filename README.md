@@ -173,7 +173,15 @@ TODO (possibly)
 - Agenda-like grid views
 - full-text search
 - blog pagination
-- backends for del.icio.us and/or TiddlySpace and/or AtomPub and/or identi.ca and/or Twitter
+- backends for:
+    - del.icio.us?
+    - TiddlySpace?
+    - AtomPub? 
+        - AtomPub has support from Wordpress
+    - identi.ca? (OStatus, StatusNet)
+    - Twitter?
+    - WebDAV?
+    - freelish.us? <http://status.net/2011/04/01/new-federated-social-bookmarks-service-freelish-us>
 - contextual tags
 
 Acknowledgements
