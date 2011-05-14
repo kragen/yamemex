@@ -132,7 +132,7 @@ TODO (possibly)
         this.render_tags(html, context, partials, in_recursion);
 
 - make titles editable
-- stop "Type your annotations here." annotations from being added when
+- stop “Type your annotations here.” annotations from being added when
   you alt-tab away from an unwanted annotation window.  This will be a
   lot easier when we can just copy the object being edited and then
   see if anything about it has changed, and not send a message if not.
@@ -145,8 +145,8 @@ TODO (possibly)
 - smoothly animating open annotation popup
 - growing annotation popup taller as you type text into it
 - hiding annotations from the page in an iframe
-- handling URL changes that don't reload the page
-- centering "see all" link
+- handling URL changes that don’t reload the page
+- centering “see all” link
 - saving favicons
 - saving screenshots
 - archiving page contents
@@ -182,8 +182,8 @@ Acknowledgements
 write.svg and write.png are
 <http://www.openclipart.org/people/aungkarns/write.svg> from
 <http://www.openclipart.org/detail/79363>, released to the public
-domain by AK/aungkarns under the CC0 PD Dedication
-<http://creativecommons.org/publicdomain/zero/1.0/>.
+domain by AK/aungkarns, Aungkarn Sugcharoun, under the CC0 PD
+Dedication <http://creativecommons.org/publicdomain/zero/1.0/>.
 
 The Candal font used for titles in blog.html is by Vernon Adams
 <http://www.newtypography.co.uk/> who has licensed it under the SIL
