@@ -48,7 +48,7 @@
     <script src="mustache/mustache.js"></script>
     <script src="db.js"></script>
     <script>
-    $(renderBlog);
+    $(renderPage);
 
     var template = 
         '{{#sections}}' +
@@ -56,13 +56,46 @@
         '  <ul>' +
         '    {{#bookmarks}}' +
         '      <li><a href="{{url}}">{{title}}</a> ' +
-        '        <span class="annotation">{{annotation}}</span>' +
+        '        <span class="annotation">{{{annotation}}}</span>' +
         '      </li>' +
         '    {{/bookmarks}}' +
         '  </ul>' +
         '{{/sections}}' ;
 
-    function renderBlog() {
+    function tags(text) {
+        return text.match(/#\w+/g) || [];
+    }
+
+    function contains(item, list) {
+        for (var ii = 0; ii < list.length; ii++) {
+            if (item === list[ii]) return true;
+        }
+        return false;
+    }
+
+    function taggify(text) {
+        return text
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/(#\w+)/g, function(tag) { 
+                var param = encodeURIComponent(tag);
+                return '<a href="?'+param+'">'+tag+'</a>';
+            })
+        ;
+    }
+
+    function renderPage() {
+        if (location.search) {
+            var tag = decodeURIComponent(location.search.substr(1));
+            $('.forwhat').text(' for '+tag);
+            document.title = $('h1').text();
+            renderBlog(tag);
+        } else {
+            renderBlog(null);
+        }
+    }
+
+    function renderBlog(tag) {
         var start = new Date();
         sql( 'select *, date(timestamp) as date from annotations ' +
              'order by timestamp desc'
@@ -73,6 +106,9 @@
 
                for (var ii = 0; ii < results.rows.length; ii++) {
                    var row = results.rows.item(ii);
+                   if (tag && !contains(tag, tags(row.annotation))) {
+                       continue;
+                   }
 
                    if (row.date !== section.date) {
                        section = { date: row.date, bookmarks: [] };
@@ -81,7 +117,7 @@
 
                    section.bookmarks.push({ url: row.url
                                           , title: row.title || '<link>'
-                                          , annotation: row.annotation
+                                          , annotation: taggify(row.annotation)
                                           });
                }
 
@@ -103,6 +139,6 @@
 
     </script>
 </head><body>
-    <h1>Your Yamemex Annotations</h1>
+    <h1>Your Yamemex Annotations<span class="forwhat"></span></h1>
     <div id="entries"></div>
 </body></html>

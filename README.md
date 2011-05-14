@@ -51,6 +51,8 @@ DONE
 - a “public” checkbox to allow private annotations
 - giving blog view a stylesheet to make it look good
 - dismissing annotation popup
+- tagging: Twitter-like, #hashtags in the blog view are links to
+  filtered views that show only things tagged with that hashtag.
 
 BUGS
 ----
@@ -158,8 +160,6 @@ TODO (possibly)
 - publishing your bookmarks as a blog on the web
 - saving previous versions of annotations
 - syncing across multiple browsers
-- tagging: Twitter-like, #hashtags in the blog view will be links to
-  filtered views that show only things tagged with that hashtag.
 - saving highlighted quotations from pages
 - automatically parsing dates from pages and displaying bookmarks in a calendar view
 - Lotus-Agenda-like auto-tagging based on user-specified keywords
