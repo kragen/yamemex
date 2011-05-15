@@ -63,8 +63,12 @@ function updateDisplayedness() {
     }
 }
 
+function offscreen() {
+    return {right: '-'+popup.width()+'px'};
+}
+
 function closeAnnotationWindow() {
-    popup.animate({width: 0}, {complete: function() { 
+    popup.animate(offscreen(), {complete: function() { 
         popup.css({display: 'none'});
     }});
 }
@@ -86,7 +90,7 @@ function openAnnotationWindow() {
     ;
 
     popup
-        .css({display: '', width: ''})
+        .css({display: ''})
         .empty()
         .append($('<span/>').append(ourCb).append(' Public'))
         .append(closebox)
@@ -97,6 +101,10 @@ function openAnnotationWindow() {
                 .attr('target', '_blank')
         )
     ;
+
+    popup.css(offscreen());
+    popup.animate({right: 0});
+
     ourTextarea.focus();
     if (!annotationRecord.annotation) ourTextarea[0].select();
 }

@@ -54,6 +54,7 @@ DONE
 - dismissing annotation popup
 - tagging: Twitter-like, #hashtags in the blog view are links to
   filtered views that show only things tagged with that hashtag.
+- smoothly animating open annotation popup
 
 BUGS
 ----
@@ -147,7 +148,6 @@ TODO (possibly)
   linked from latest date)
 - make annotation pane not fade when keyboard focus is in it
     - refactor this into the first version of Kogluktualuk
-- smoothly animating open annotation popup
 - growing annotation popup taller as you type text into it
 - hiding annotations from the page in an iframe
 - handling URL changes that don’t reload the page
