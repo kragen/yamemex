@@ -7,9 +7,9 @@ var annotationRecord = null;
 // jQuery objects
 var ourTextarea = null;
 var ourCb = null;
-var thing = null;
+var popup = null;
 
-// This is a kludge to insert our thing into the body as early as
+// This is a kludge to insert our popup into the body as early as
 // possible.  We don’t actually get notified that the document body
 // has been created, as far as I can tell, so we have to poll.
 
@@ -19,7 +19,7 @@ function insertionListener() {
     if (!document.body) return;
     clearInterval(bodyPoller);
 
-    thing = $('<div class="yamemex"/>')
+    popup = $('<div class="yamemex"/>')
       .css({ position: 'fixed'
            , top: '40px'
            , right: '0px'
@@ -41,8 +41,8 @@ function insertionListener() {
               .click(openAnnotationWindow)
              )
 
-      .hover(function() { thing.animate({opacity: 0.95}) },
-             function() { thing.animate({opacity: 0.5}) })
+      .hover(function() { popup.animate({opacity: 0.95}) },
+             function() { popup.animate({opacity: 0.5}) })
 
       .appendTo(document.body)
 
@@ -58,14 +58,14 @@ chrome.extension.sendRequest( {getAnnotationsFor: location.href}
 });
 
 function updateDisplayedness() {
-    if (annotationRecord && annotationRecord.annotation && thing) {
-        thing.css({display: ''});
+    if (annotationRecord && annotationRecord.annotation && popup) {
+        popup.css({display: ''});
     }
 }
 
 function closeAnnotationWindow() {
-    thing.animate({width: 0}, {complete: function() { 
-        thing.css({display: 'none'});
+    popup.animate({width: 0}, {complete: function() { 
+        popup.css({display: 'none'});
     }});
 }
 
@@ -85,7 +85,7 @@ function openAnnotationWindow() {
         .css({float: 'right'})
     ;
 
-    thing
+    popup
         .css({display: '', width: ''})
         .empty()
         .append($('<span/>').append(ourCb).append(' Public'))

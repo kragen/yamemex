@@ -73,7 +73,6 @@ recurved
 TODO (possibly)
 ---------------
 
-- rename `thing`
 - make annotation popup close button use some clip art from
   openclipart
 - add clickable recent tags
