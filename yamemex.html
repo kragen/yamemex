@@ -1,7 +1,11 @@
 <script src="db.js"></script>
 <script>
 chrome.browserAction.onClicked.addListener(function(tab) {
-    chrome.tabs.sendRequest(tab.id, {openAnnotationWindow: 'please'});
+    if (tab.url === 'chrome://newtab/') {
+        chrome.tabs.create({url: chrome.extension.getURL('blog.html')});
+    } else {
+        chrome.tabs.sendRequest(tab.id, {openAnnotationWindow: 'please'});
+    }
 });
 
 function getAnnotation(url, callback) {

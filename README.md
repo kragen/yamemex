@@ -55,6 +55,7 @@ DONE
 - tagging: Twitter-like, #hashtags in the blog view are links to
   filtered views that show only things tagged with that hashtag.
 - smoothly animating open annotation popup
+- making browser-action icon open blog view when on a new-tab page
 
 BUGS
 ----
@@ -143,7 +144,6 @@ TODO (possibly)
   lot easier when we can just copy the object being edited and then
   see if anything about it has changed, and not send a message if not.
 - automatically snarf publication date off the page
-- make icon do something when on a new-tab page
 - storing original date for annotations so they stay in order (perhaps
   linked from latest date)
 - make annotation pane not fade when keyboard focus is in it
