@@ -77,7 +77,7 @@ TODO (possibly)
 
 - make annotation popup close button use some clip art from
   openclipart
-- add clickable recent tags
+- add clickable recent tags in annotation popup
 - make blog view editable (!!)
 - refactor this database stuff, because this is totally fucking
   ridiculous. Adding the “public” checkbox involved editing seven
@@ -138,7 +138,7 @@ TODO (possibly)
 
         this.render_tags(html, context, partials, in_recursion);
 
-- make titles editable
+- make titles editable in annotation popup
 - stop “Type your annotations here.” annotations from being added when
   you alt-tab away from an unwanted annotation window.  This will be a
   lot easier when we can just copy the object being edited and then
