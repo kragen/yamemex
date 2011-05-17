@@ -6,8 +6,11 @@ var annotationRecord = null;
 
 // jQuery objects
 var ourTextarea = null;
+var ourPreview = null;
 var ourCb = null;
 var popup = null;
+
+var converter = new Showdown.converter();
 
 // This is a kludge to insert our popup into the body as early as
 // possible.  We don’t actually get notified that the document body
@@ -82,13 +85,16 @@ function closeAnnotationWindow() {
 function openAnnotationWindow() {
     ourTextarea = $('<textarea/>')
         .val(annotationRecord.annotation || 'Type your annotations here.')
-        .css({display: 'block'})
+        .css({display: 'block', width: '100%'})
         .keyup(sendAnnotation)
     ;
     ourCb = $('<input type="checkbox"/>');
     // I forget if ‘public’ is a reserved word.
     ourCb[0].checked = annotationRecord['public'];
     ourCb.change(sendAnnotation);
+
+    ourPreview = $('<div/>').css({maxWidth: '25em'});
+    updatePreview();
 
     var closebox = $('<div>X</div>')
         .click(closeAnnotationWindow)
@@ -100,6 +106,7 @@ function openAnnotationWindow() {
         .empty()
         .append($('<span/>').append(ourCb).append(' Public'))
         .append(closebox)
+        .append(ourPreview)
         .append(ourTextarea)
         .append(
             $('<a>see all annotations</a>')
@@ -120,6 +127,7 @@ chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
 });
 
 function sendAnnotation() {
+    updatePreview();
     annotationRecord.annotation = ourTextarea.val();
     annotationRecord['public'] = ourCb[0].checked ? 1 : 0;
     chrome.extension.sendRequest({ updateAnnotationsFor: location.href
@@ -128,4 +136,8 @@ function sendAnnotation() {
                                  , title: document.title
                                  , 'public': annotationRecord['public']
                                  });
+}
+
+function updatePreview() {
+    ourPreview.html(converter.makeHtml(ourTextarea.val()));
 }
