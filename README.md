@@ -185,7 +185,7 @@ TODO (possibly)
     - Twitter?
     - WebDAV?
     - freelish.us? <http://status.net/2011/04/01/new-federated-social-bookmarks-service-freelish-us>
-- contextual tags
+- contextual tags (what was this?)
 
 Acknowledgements
 ----------------
