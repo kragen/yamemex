@@ -163,8 +163,8 @@ TODO (possibly)
   with Showdown:
     - It’s reasonably fast, like ≪1ms per item with the scanty
       annotations I currently have. (i.e. it’s faster than Mustache.)
-    - It wraps everything in a `<p>`, which is annoying and would
-      require some working around.
+    - It wraps everything in a `<p>`, which is annoying and 
+      requires some working around.
     - Adding hashtag links is reasonably straightforward; since
       they’re HTML, they just pop out in the output without trouble.
     - It doesn’t ensure that its output is well-formed. In particular,
