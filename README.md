@@ -171,7 +171,10 @@ TODO (possibly)
       a stray `<textarea>` tag in my annotations wrapped the entire
       rest of my bookmarks.  If there’s no way around that, that would
       also make it impossible to whitelist tags, attributes, and URL
-      schemes to avoid XSS.
+      schemes to avoid XSS. (It contains a somewhat ill-considered
+      stripUnwantedHTML function, but that defaults to an URL scheme
+      blacklist rather than whitelist — and it works on the output
+      HTML, not the input.)
 - publishing your bookmarks as a blog on the web
 - saving previous versions of annotations
 - syncing across multiple browsers
