@@ -1,3 +1,6 @@
 [submodule "mustache"]
 	path = mustache
 	url = git://github.com/janl/mustache.js.git
+[submodule "showdown"]
+	path = showdown
+	url = git://github.com/fivesixty/mdext.git

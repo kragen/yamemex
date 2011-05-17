@@ -76,7 +76,7 @@ TODO (possibly)
 ---------------
 
 - make annotation popup close button use some clip art from
-  openclipart
+  openclipart (maybe <http://www.openclipart.org/detail/74881>?)
 - add clickable recent tags in annotation popup
 - make blog view editable (!!)
 - refactor this database stuff, because this is totally fucking
@@ -159,7 +159,19 @@ TODO (possibly)
   <https://github.com/fivesixty/mdext> looks like the current home
   page of the most-maintained version of Showdown, which seems like
   the best implementation of Markdown in JS.  There’s a WYSIWYM editor
-  for it at <http://code.google.com/p/wmd-new/>.
+  for it at <http://code.google.com/p/wmd-new/>.  Initial impressions
+  with Showdown:
+    - It’s reasonably fast, like ≪1ms per item with the scanty
+      annotations I currently have. (i.e. it’s faster than Mustache.)
+    - It wraps everything in a `<p>`, which is annoying and would
+      require some working around.
+    - Adding hashtag links is reasonably straightforward; since
+      they’re HTML, they just pop out in the output without trouble.
+    - It doesn’t ensure that its output is well-formed. In particular,
+      a stray `<textarea>` tag in my annotations wrapped the entire
+      rest of my bookmarks.  If there’s no way around that, that would
+      also make it impossible to whitelist tags, attributes, and URL
+      schemes to avoid XSS.
 - publishing your bookmarks as a blog on the web
 - saving previous versions of annotations
 - syncing across multiple browsers

@@ -46,6 +46,7 @@
     </style>
     <script src="jquery-1.5.2.min.js"></script>
     <script src="mustache/mustache.js"></script>
+    <script src="showdown/src/showdown.js"></script>
     <script src="db.js"></script>
     <script>
     $(renderPage);
@@ -62,6 +63,8 @@
         '  </ul>' +
         '{{/sections}}' ;
 
+    var converter = new Showdown.converter();
+
     function tags(text) {
         return text.match(/#\w+/g) || [];
     }
@@ -74,14 +77,13 @@
     }
 
     function taggify(text) {
-        return text
-            .replace(/&/g, '&amp;')
-            .replace(/</g, '&lt;')
-            .replace(/(#\w+)/g, function(tag) { 
-                var param = encodeURIComponent(tag);
-                return '<a href="?'+param+'">'+tag+'</a>';
-            })
-        ;
+        return converter.makeHtml(
+            text
+                .replace(/(#\w+)/g, function(tag) { 
+                    var param = encodeURIComponent(tag);
+                    return '<a href="?'+param+'">'+tag+'</a>';
+                })
+        );
     }
 
     function renderPage() {
