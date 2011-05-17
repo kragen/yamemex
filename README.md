@@ -56,6 +56,8 @@ DONE
   filtered views that show only things tagged with that hashtag.
 - smoothly animating open annotation popup
 - making browser-action icon open blog view when on a new-tab page
+- making annotation popup close button use some clip art from
+  openclipart (<http://www.openclipart.org/detail/74881>?)
 
 BUGS
 ----
@@ -75,8 +77,6 @@ recurved
 TODO (possibly)
 ---------------
 
-- make annotation popup close button use some clip art from
-  openclipart (maybe <http://www.openclipart.org/detail/74881>?)
 - add clickable recent tags in annotation popup
 - make blog view editable (!!)
 - refactor this database stuff, because this is totally fucking
@@ -210,6 +210,8 @@ write.svg and write.png are
 <http://www.openclipart.org/detail/79363>, released to the public
 domain by AK/aungkarns, Aungkarn Sugcharoun, under the CC0 PD
 Dedication <http://creativecommons.org/publicdomain/zero/1.0/>.
+
+cerrar.png is by XXX finish this!
 
 The Candal font used for titles in blog.html is by Vernon Adams
 <http://www.newtypography.co.uk/> who has licensed it under the SIL

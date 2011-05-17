@@ -96,7 +96,10 @@ function openAnnotationWindow() {
     ourPreview = $('<div/>').css({maxWidth: '25em'});
     updatePreview();
 
-    var closebox = $('<div>X</div>')
+    var closebox = $('<div/>')
+        .append($('<img/>')
+                .attr('src', chrome.extension.getURL('cerrar-cropped.png'))
+                .css({width: '1em', height: '1em'}))
         .click(closeAnnotationWindow)
         .css({float: 'right'})
     ;
