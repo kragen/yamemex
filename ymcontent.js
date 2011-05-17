@@ -26,7 +26,7 @@ function insertionListener() {
            , backgroundColor: 'white'
            , borderTopLeftRadius: borderRadius
            , borderBottomLeftRadius: borderRadius
-           , padding: '3px'
+           , padding: '3px 3px 6px'
            , borderTop: border
            , borderLeft: border
            , borderBottom: border
@@ -38,10 +38,10 @@ function insertionListener() {
       .append($('<img/>')
               .attr('src', chrome.extension.getURL('write.png'))
               .css({width: iconSize, height: iconSize, margin: 0})
-              .click(openAnnotationWindow)
+              .click(clickHandler)
              )
 
-      .hover(function() { popup.animate({opacity: 0.95}) },
+      .hover(function() { popup.animate({opacity: 0.92 }) },
              function() { popup.animate({opacity: 0.5}) })
 
       .appendTo(document.body)
@@ -49,6 +49,12 @@ function insertionListener() {
       ;
 
     updateDisplayedness();
+}
+
+function clickHandler() {
+    popup.animate(offscreen(), { duration: 'fast'
+                               , complete: openAnnotationWindow
+                               });
 }
 
 chrome.extension.sendRequest( {getAnnotationsFor: location.href}
