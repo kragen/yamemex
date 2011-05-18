@@ -75,6 +75,8 @@ recurved
 TODO (possibly)
 ---------------
 
+- try out a different Markdown implementation:
+  <https://github.com/isaacs/markdown-js>
 - make annotation popup close button use some clip art from
   openclipart
 - add clickable recent tags in annotation popup
