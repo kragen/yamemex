@@ -46,6 +46,7 @@
     </style>
     <script src="jquery-1.5.2.min.js"></script>
     <script src="mustache/mustache.js"></script>
+    <script src="markdown-js/lib/markdown.js"></script>
     <script src="db.js"></script>
     <script>
     $(renderPage);
@@ -74,14 +75,12 @@
     }
 
     function taggify(text) {
-        return text
-            .replace(/&/g, '&amp;')
-            .replace(/</g, '&lt;')
-            .replace(/(#\w+)/g, function(tag) { 
+        return markdown.toHTML(text)
+            .replace(/(&?#\w+)/g, function(tag) { 
+                if (tag.charAt(0) === '&') return tag;
                 var param = encodeURIComponent(tag);
                 return '<a href="?'+param+'">'+tag+'</a>';
-            })
-        ;
+            });
     }
 
     function renderPage() {
