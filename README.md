@@ -78,6 +78,7 @@ TODO (possibly)
 ---------------
 
 - add clickable recent tags in annotation popup
+- make tags case-insensitive for search
 - make blog view editable (!!)
 - refactor this database stuff, because this is totally fucking
   ridiculous. Adding the “public” checkbox involved editing seven
