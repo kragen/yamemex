@@ -75,8 +75,20 @@ recurved
 TODO (possibly)
 ---------------
 
-- try out a different Markdown implementation:
-  <https://github.com/isaacs/markdown-js>
+- trying out markdown-js from
+  <https://github.com/isaacs/markdown-js>.  Initial impressions:
+    - it’s also reasonably fast, though not as fast as Showdown. It
+      takes >1ms per item.
+    - it produces well-formed output by the simple expedient of
+      HTML-escaping any input, even input that’s already properly
+      escaped, like `&lt;link&gt;`, which clearly should not be
+      touched.  Re-escaping it produces incorrect output. Maybe
+      there’s a way to turn this off and let through safe markup if it
+      doesn’t fuck other things up.  I have to check.
+    - It renders two spaces at the end of a line into `<br><br>`,
+      which is also clearly wrong.
+    - I am optimistic about its “JSONML” intermediate format, which is
+      probably the correct place to add the hashtags.
 - make annotation popup close button use some clip art from
   openclipart
 - add clickable recent tags in annotation popup
