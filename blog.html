@@ -37,9 +37,8 @@
         margin-top: 2em;
     }
 
-    ul, li { margin: 0; padding: 0 }
-    ul { list-style-type: none }
-    li { margin-top: 1em; margin-bottom: 1em; line-height: 1.7 }
+    .bookmarks { margin: 0; padding: 0; list-style-type: none }
+    li.bookmarks { margin-top: 1em; margin-bottom: 1em; line-height: 1.7 }
 
     a { color: #933 }
 
@@ -54,9 +53,9 @@
     var template = 
         '{{#sections}}' +
         '<h2>{{date}}</h2>' +
-        '  <ul>' +
+        '  <ul class="bookmarks">' +
         '    {{#bookmarks}}' +
-        '      <li><a href="{{url}}">{{title}}</a> ' +
+        '      <li class="bookmarks">' +
         '        <span class="annotation">{{{annotation}}}</span>' +
         '      </li>' +
         '    {{/bookmarks}}' +
@@ -74,8 +73,17 @@
         return false;
     }
 
-    function taggify(text) {
-        return markdown.toHTML(text)
+    function entry(title, url, text) {
+        title = title
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/([][\\_*])/g, '\\$1')
+        ;
+        url = url
+            .replace(/([][\\_*])/g, '\\$1')
+        ;
+
+        return markdown.toHTML('['+title+']('+url+') ' + text)
             .replace(/(&?#\w+)/g, function(tag) { 
                 if (tag.charAt(0) === '&') return tag;
                 var param = encodeURIComponent(tag);
@@ -113,11 +121,10 @@
                        section = { date: row.date, bookmarks: [] };
                        sections.push(section);
                    }
-
-                   section.bookmarks.push({ url: row.url
-                                          , title: row.title || '<link>'
-                                          , annotation: taggify(row.annotation)
-                                          });
+                   
+                   var annotation = entry(row.title || '<link>', row.url, 
+                                          row.annotation);
+                   section.bookmarks.push({ annotation: annotation });
                }
 
                $('#entries').html(Mustache.to_html(template, 
