@@ -64,6 +64,8 @@ BUGS
 - malicious JavaScript in a web page can spy on your annotation
 - annotation button doesn’t work until page finishes loading
 - doesn’t work on framesets
+- scrolls the document right when the document is wider than the
+  window --- and sometimes even when it’s not!
 
 Rejected names
 --------------
