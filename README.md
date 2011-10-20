@@ -84,11 +84,26 @@ TODO (possibly)
       escaped, like `&lt;link&gt;`, which clearly should not be
       touched.  Re-escaping it produces incorrect output. Maybe
       there’s a way to turn this off and let through safe markup if it
-      doesn’t fuck other things up.  I have to check.
-    - It renders two spaces at the end of a line into `<br><br>`,
-      which is also clearly wrong.
+      doesn’t fuck other things up.  I have to check.  Looks like the
+      HTML characters are passed through preserved into the JsonML
+      tree and then escaped by `renderJsonML` for output, which calls
+      `render_tree`, which calls `escapeHTML` in the string case and
+      otherwise recurses.  I could probably write a tree walker to
+      handle the tags, but I also need to pass through entities
+      unharmed (e.g. `&aring;`) except in `inlinecode` and
+      `code_block` cases.  I could write my own `convert_tree_to_html`
+      function.
+    - It renders two spaces at the end of a line into `<br></br>`,
+      which is also clearly wrong, because it causes the browser to
+      infer an additional `<br>` for the second one.  `render_tree`
+      perhaps should know which tags are supposed to be empty so that
+      it does not do this, except that `render_tree` is currently not
+      very HTML-specific.
     - I am optimistic about its “JSONML” intermediate format, which is
       probably the correct place to add the hashtags.
+    - another minor bug: ``` `` `x` `` ``` (with double backticks
+      around the outside) converts to ``<code> `x` </code>`` instead
+      of the correct ``<code>`x`</code>`` (dropping the spaces).
 - make annotation popup close button use some clip art from
   openclipart
 - add clickable recent tags in annotation popup
