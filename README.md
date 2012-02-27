@@ -5,6 +5,10 @@ preliminary, but it already provides a reverse-chronological view of
 your bookmark annotations, and supports Twitter-style #hashtags 
 to categorize them.
 
+![](https://github.com/kragen/yamemex/raw/master/yamemex.html "[Blog view of annotations]")
+![](https://github.com/kragen/yamemex/raw/master/yamemex-editing-pane.png "[An annotation]")
+![](https://github.com/kragen/yamemex/raw/master/yamemex-editing-pane-2.png "[An annotation showing Markdown]")
+
 It’s free software under the MIT X11 License.
 
 To install
